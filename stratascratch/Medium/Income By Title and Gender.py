@@ -13,7 +13,7 @@ total_bonus = (sf_bonus
 
 result = (
         sf_employee 
-        .join(total_bonus, sf_employee.id == total_bonus.worker_ref_id, how='left') 
+        .join(total_bonus, sf_employee.id == total_bonus.worker_ref_id, how='inner') 
         .groupBy('employee_title', 'sex') 
         .agg(avg(col('salary') + col('bonus')).alias('avg_compensation'))
         )
